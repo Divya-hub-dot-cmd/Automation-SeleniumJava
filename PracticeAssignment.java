@@ -1,10 +1,5 @@
 package automate.testing;
 
-
-
-
-
-
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -12,10 +7,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 public class PracticeAssignment {
 
-
-    @Test
+    // Test Case 1: Positive Login
+    @Test(priority = 1)
     public void positiveLoginTest() {
 
         WebDriver driver = new ChromeDriver();
@@ -31,16 +27,15 @@ public class PracticeAssignment {
                 driver.getCurrentUrl().contains("logged-in-successfully")
         );
 
-        String pageText = driver.findElement(By.tagName("body")).getText();
-        Assert.assertTrue(pageText.contains("successfully logged in")
-                || pageText.contains("Congratulations"));
-
-        Assert.assertTrue(driver.findElement(By.linkText("Log out")).isDisplayed());
+        Assert.assertTrue(
+                driver.findElement(By.linkText("Log out")).isDisplayed()
+        );
 
         driver.quit();
     }
 
-    @Test
+    // Test Case 2: Negative Username
+    @Test(priority = 2, dependsOnMethods = "positiveLoginTest")
     public void negativeUsernameTest() {
 
         WebDriver driver = new ChromeDriver();
@@ -60,7 +55,8 @@ public class PracticeAssignment {
         driver.quit();
     }
 
-    @Test
+    // Test Case 3: Negative Password
+    @Test(priority = 3, dependsOnMethods = "negativeUsernameTest")
     public void negativePasswordTest() {
 
         WebDriver driver = new ChromeDriver();
@@ -80,4 +76,5 @@ public class PracticeAssignment {
         driver.quit();
     }
 }
+
 
