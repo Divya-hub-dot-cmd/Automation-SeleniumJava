@@ -219,9 +219,14 @@ public class LeafGroundInputTest {
 
 	    Assert.assertFalse(message.trim().isEmpty(),"Validation message not displayed");
 	}
+	@AfterClass
+	public void closeDown() {
+		driver.quit();
+	}
 	
 
 	
 	
 
 }
+
