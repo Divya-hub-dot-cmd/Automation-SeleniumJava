@@ -25,7 +25,7 @@ public class Amazon {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.s-main-slot.s-result-list.s-search-results.sg-row")));
 		By brandSection=By.xpath("//span[text()='Brands']");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(brandSection));
-	    By brandRefinement=By.xpath("//div[@id='brandsRefinements']//li//span[@class='a-list-item']//a");
+	    By brandRefinement=By.xpath("//div[@id='brandsRefinements']//div[contains(@class,'a-checkbox a-checkbox-fancy s-navigation-checkbox aok-float-left')]");
 		List<WebElement> brands=driver.findElements(brandRefinement);
 		int count=0;
 		for(int i=0;i<brands.size();i++) {
